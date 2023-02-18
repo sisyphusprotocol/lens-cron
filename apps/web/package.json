@@ -24,11 +24,11 @@
     "@types/node": "18.7.13",
     "@types/react": "18.0.17",
     "@types/react-dom": "18.0.6",
-    "config": "*",
     "eslint": "8.23.0",
     "eslint-config-next": "12.2.5",
-    "lib": "*",
-    "tsconfig": "*",
+    "lib": "workspace:*",
+    "tsconfig": "workspace:*",
+    "config": "workspace:*",
     "typescript": "4.8.2"
   }
 }
