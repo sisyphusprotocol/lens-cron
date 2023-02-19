@@ -7,7 +7,17 @@ import { configureChains } from 'wagmi';
 import { publicProvider } from 'wagmi/providers/public';
 import { goerli } from 'wagmi/chains';
 
-import WagmiProvider from './WagmiProvider';
+import { LensConfig, staging, LensProvider } from '@lens-protocol/react';
+import { localStorage } from '@lens-protocol/react/web';
+import { bindings as wagmiBindings } from '@lens-protocol/wagmi';
+
+import WagmiProvider from '../WagmiProvider';
+
+const lensConfig: LensConfig = {
+  bindings: wagmiBindings(),
+  environment: staging,
+  storage: localStorage()
+};
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   const [mounted, setMounted] = useState(false);
@@ -19,9 +29,11 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
 
   return (
     <WagmiProvider>
-      <RainbowKitProvider chains={chains} theme={midnightTheme()} coolMode>
-        <Component {...pageProps} />
-      </RainbowKitProvider>
+      <LensProvider config={lensConfig}>
+        <RainbowKitProvider chains={chains} theme={midnightTheme()} coolMode>
+          <Component {...pageProps} />
+        </RainbowKitProvider>
+      </LensProvider>
     </WagmiProvider>
   );
 };
