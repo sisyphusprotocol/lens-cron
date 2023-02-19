@@ -1,14 +1,10 @@
 /* eslint-disable react/react-in-jsx-scope */
 import { ethers, providers } from 'ethers';
-import {
-  configureChains,
-  createClient,
-  WagmiConfig,
-  defaultChains as WAGMI_SUPPORTED_CHAINS
-} from 'wagmi';
+import { configureChains, createClient, WagmiConfig } from 'wagmi';
 import { publicProvider } from 'wagmi/providers/public';
 
 import { getDefaultWallets } from '@rainbow-me/rainbowkit';
+import { polygon, polygonMumbai } from 'wagmi/chains';
 
 type TProps = {
   children: React.ReactNode;
@@ -42,7 +38,7 @@ export const DEFAULT_CHAIN_RPC_LINK: { [key: number]: string } = {
 };
 
 const WagmiProvider: React.FC<TProps> = ({ children }: any) => {
-  const supportedChains = [...WAGMI_SUPPORTED_CHAINS];
+  const supportedChains = [polygon, polygonMumbai];
 
   const { chains, provider } = configureChains(supportedChains, [publicProvider()]);
 

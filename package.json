@@ -67,5 +67,8 @@
     "packages/ui/**/*.{js,ts,jsx,tsx}": [
       "eslint --fix"
     ]
+  },
+  "dependencies": {
+    "daisyui": "^2.50.1"
   }
 }

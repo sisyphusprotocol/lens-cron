@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 import { configureChains } from 'wagmi';
 import { publicProvider } from 'wagmi/providers/public';
 import { goerli } from 'wagmi/chains';
+
 import WagmiProvider from './WagmiProvider';
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
